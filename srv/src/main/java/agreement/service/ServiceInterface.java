@@ -1,6 +1,6 @@
-package jupiterpa.serviceagreement.service;
+package agreement.service;
 
-import jupiterpa.serviceagreement.model.*;
+import agreement.model.*;
 
 public interface ServiceInterface {
 	public void initialize();

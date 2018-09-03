@@ -1,4 +1,4 @@
-package jupiterpa.serviceagreement.model;
+package agreement.model;
 
 public class ServiceAgreement {
 
