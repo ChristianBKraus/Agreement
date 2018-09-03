@@ -1,0 +1,20 @@
+{
+  "name": "agreement",
+  "version": "0.1.0",
+  "description": "cds-auto-generated project",
+  "repository": "<link to your github>",
+  "author": "D043312",
+  "dependencies": {
+    "@sap/cds": "*",
+    "@sap/generator-cds": "0.0.22"
+  },
+  "scripts": {
+    "build": "cds build --clean"
+  },
+  "license": "ISC",
+  "cds": {
+    "data": {
+      "model": "db/"
+    }
+  }
+}

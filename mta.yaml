@@ -1,0 +1,17 @@
+_schema-version: 2.0.0
+ID: agreement
+version: 1.0.0
+modules:
+  - name: db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: agreement-hdi-container
+resources:
+  - name: agreement-hdi-container
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
