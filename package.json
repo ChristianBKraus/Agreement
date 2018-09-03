@@ -1,8 +1,8 @@
 {
   "name": "agreement",
   "version": "0.1.0",
-  "description": "cds-auto-generated project",
-  "repository": "<link to your github>",
+  "description": "Service Agreement",
+  "repository": "https://github.com/ChristianBKraus/Agreement",
   "author": "D043312",
   "dependencies": {
     "@sap/cds": "*",
