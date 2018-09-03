@@ -1,5 +1,5 @@
 package agreement.service;
 
-public class ValidationException extends Exception {
+public class ValidationException extends Exception { 
 
 }
