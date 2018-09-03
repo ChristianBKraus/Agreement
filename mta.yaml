@@ -10,8 +10,41 @@ modules:
       disk-quota: 256M
     requires:
       - name: agreement-hdi-container
+  - name: srv
+    type: java
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    requires:
+      - name: agreement-uaa
+      - name: agreement-hdi-container
+      - name: agreement-logging
+    provides:
+      - name: srv_api
+        properties:
+          url: '${default-url}'
 resources:
   - name: agreement-hdi-container
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
+  - name: agreement-uaa
+    type: com.sap.xs.uaa
+    parameters:
+      service-plan: default
+      config:
+        xsappname: 'agreement-${org}-${space}'
+        tenant-mode: dedicated
+        scopes:
+          - name: $XSAPPNAME.Show
+            description: display
+          - name: $XSAPPNAME.Add
+            description: create
+          - name: $XSAPPNAME.Remove
+            description: delete
+  - name: agreement-logging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite

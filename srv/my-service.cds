@@ -1,12 +1,18 @@
-/**
- * Define services providing access to your data model entities in here.
- * Adjust namespaces, names, entities and the file name and add more files as appropriate.
- * https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/3a56562e4b2f43b8bff9f8211e37b72c.html
- */
-namespace my.service;
-using my.data.model as data from '../db/data-model';
 
-service FooService {
-    entity Foo as projection on data.Foo;
-    //...
+
+// [ADDING EXTERNAL SERVICE] To add entities from external services:
+// [ADDING EXTERNAL SERVICE] - STEP 1 - Add a data model from an external service to the project (by selecting the relevant menu option in SAP Web IDE).
+// [ADDING EXTERNAL SERVICE] - STEP 2 - Add a reference to the external service model file:
+// using <external_service_name> as <alias_name> from '../srv/external/csn/<external_service_name>';
+
+service CatalogService {
+
+	entity MyEntity {
+	    key ID : Integer;
+	}
+
+	// [ADDING EXTERNAL SERVICE] - STEP 3 - Add a new entity to the exposed service model:
+	// @cds.persistence.skip
+	// entity <entity_name> as projection on <alias_name>.<external_entity_name>;
+
 }

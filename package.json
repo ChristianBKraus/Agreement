@@ -15,6 +15,9 @@
   "cds": {
     "data": {
       "model": "db/"
+    },
+    "service": {
+      "model": "srv/"
     }
   }
 }

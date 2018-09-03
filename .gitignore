@@ -11,3 +11,5 @@ gen
 *.mtar
 
 .DS_Store
+srv/target/*
+srv/src/main/resources/edmx/*
