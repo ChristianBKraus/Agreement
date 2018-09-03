@@ -8,7 +8,7 @@
 service CatalogService { 
 
 	entity MyEntity {
-	    key ID : Integer;
+	    key ID : Integer;  
 	}
 
 	// [ADDING EXTERNAL SERVICE] - STEP 3 - Add a new entity to the exposed service model:
