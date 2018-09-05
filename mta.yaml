@@ -32,7 +32,7 @@ resources:
   - name: agreement-uaa
     type: com.sap.xs.uaa
     parameters:
-      service-plan: default
+      service-plan: application
       config:
         xsappname: 'agreement-${org}-${space}'
         tenant-mode: dedicated

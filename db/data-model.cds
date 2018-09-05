@@ -1,5 +1,5 @@
-namespace jupiterpa.serviceagreement;
-using jupiterpa.base as base from '../db/base-model';
+namespace agreement;
+using base as base from '../db/base-model';
 
 type ServiceType : String enum { overheadCost; ITCost; };
 type BillingMethodType : String enum { plannedCostPlusFixedMargin; };

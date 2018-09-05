@@ -1,5 +1,5 @@
-namespace jupiterpa.serviceagreement;
-using jupiterpa.serviceagreement as sa from '../db/data-model';
+namespace agreement;
+using agreement as sa from '../db/data-model';
  
 service ServiceAgreementService {
 

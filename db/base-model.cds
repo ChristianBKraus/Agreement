@@ -1,4 +1,4 @@
-namespace jupiterpa.base;
+namespace base;
 
 type User : String;
 type Status : String enum  { created; started; finished; };

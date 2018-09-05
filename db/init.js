@@ -1,34 +1,83 @@
-//const cds = require('@sap/cds').connect()
-//cds.run (()=>{"serialized"
-//
-//  let { ServiceAgreement, ServiceReceiver, PlannedCost } = cds.model.exports
-//
-//  INSERT.into (ServiceAgreement) .columns (
-//    'createdAt', 'createdBy', 'changedAt', 'changedBy', 
-//    'ID', 'serviceType', 'description', 'longDescription', 'validFrom', 'validTo',
-//    'responsiblePerson', 'approvalPerson', 
-//    'billingMethod', 'billingFrequency', 'costCollectionMethod', 
-//  ) .rows (
-//    [ 201, 'Wuthering Heights', 101, 12 ],
-//    [ 207, 'Jane Eyre', 107, 11 ],
-//    [ 251, 'The Raven', 150, 333 ],
-//    [ 252, 'Eleonora', 150, 555 ],
-//    [ 271, 'Catweazle', 170, 222 ]
-//  )
-//
-//  INSERT.into (Authors) .entries (
-//    { ID:101, name:'Emily Brontë' },
-//    { ID:107, name:'Charlote Brontë' },
-//    { ID:150, name:'Edgar Allen Poe' },
-//    { ID:170, name:'Richard Carpenter' }
-//  )
-//
-//  // two test reads
-//  SELECT.from (Books) .then (console.log)
-//  SELECT.from (Books, ['title']) .where ({ 
-//    author_id: SELECT('id').from(Authors) .where ({name: {like:'%Brontë%'}})
+const cds = require('@sap/cds').connect()
+cds.run (()=>{"serialized"
+
+  let { ServiceAgreement, ServiceReceiver, PlannedCost,
+        BusinessPartner, Company, CostAllocationObject, CostElement } = cds.model.exports
+
+  // ServiceAgreement
+  INSERT.into (ServiceAgreement) .columns (
+    'status', 'createdAt', 'createdBy', 'changedAt', 'changedBy', 
+    'ID', 'serviceType', 'description', 'longDescription', 'validFrom', 'validTo',
+    'responsiblePerson', 'approvalPerson', 
+    'billingMethod', 'billingFrequency', 'costCollectionMethod', 
+    'currency', 'plannedExchangerate', 'plannedmethod',
+    'businessPartner_ID', 'costAllocationObject_ID'
+  ) .rows (
+    [ 'created', 1, 'User', 1, 'User', 
+        'SA1',  'overheadCost', '1st Service', '1st Service', 1, 1,
+        'User1', 'User2', 
+        'plannedCostPlusFixedMargin', 'monthlyWithQuaterlyAdjustment', 'byPlannedEmployeeNumber',
+        'EUR', 'monthlyAverage', 'nettingByInhouseBank', 'Project',
+        'BP1', 'CA1' ],
+  );
+
+  // ServiceReceiver
+  INSERT.into(ServiceReceiver).columns(
+      'id', 'serviceAgreement_ID', 'businessPartner_ID', 'company_ID', 'costAllocationObject_ID'
+  ). rows(
+    [ 'SR1', 'SA1', 'BP1', 'CP1', 'CA1' ]
+  );
+
+  // PlannedCost
+  INSERT.into(PlannedCost).columns(
+      'id', 'validFrom', 'validTo', 'costElement_ID', 
+      'amount_Amount', 'amount_Currency', 'ServiceAgreement_ID', 'costElement_ID'
+  ).rows(
+    [ 'PC1', 1,1, 'CE1', 100.00, 'EUR', 'SA1', 'CE1' ]
+  );
+
+  // BusinessPartner
+  INSERT.into(BusinessPartner).columns(
+       'id', 'description'  
+  ).rows(
+    [ 'BP1', 'Business Partner 1' ]
+  );
+
+  // Company
+  INSERT.into(Company).columns(
+    'id', 'code', 'description'
+  ).rows(
+    [ 'CP1', '0001', 'Company A'],
+    [ 'CP2', '0002', 'Company B']
+  );
+
+  // CostAllocationObject 
+  INSERT.into(CostAllocationObject).columns(
+    'id', 'costAllocationObjectType', 'description'
+  ).rows(
+    [ 'CA1', 'Project', 'Project I']
+  );
+
+  // CostElement
+  INSERT.into(CostElement).columns(
+    'id', 'description'
+  ).rows(
+    [ 'CE1', 'Cost Element 1']
+  );
+
+////// test reads
+  SELECT.from (ServiceAgreement) .then (console.log)
+  SELECT.from (ServiceReceiver) .then (console.log)
+  SELECT.from (PlannedCost) .then (console.log)
+  SELECT.from (BusinessPartner) .then (console.log)
+  SELECT.from (Company) .then (console.log)
+  SELECT.from (CostAllocationObject) .then (console.log)
+  SELECT.from (CostElement) .then (console.log)
+
+  //  SELECT.from (serviceAgreement, ['description']) .where ({ 
+//    businesPartner_id: SELECT('id').from(Authors) .where ({name: {like:'%Brontë%'}})
 //  }) .then (all => console.log (
 //    `\nby Brontës: \n\n  ${all.map(b=>b.title).join('\n  ')}
 //  `)) 
-//
-//}) 
+
+}) 
