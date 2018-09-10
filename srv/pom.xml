@@ -14,6 +14,22 @@
   <properties>
     <packageName>agreement</packageName>
   </properties>
+  <dependencies>
+  	<!--  	  <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>3.7.2</version>
+    </dependency>
+    -->
+    <!-- https://mvnrepository.com/artifact/com.sap.cloud.db.jdbc/ngdbc -->
+    <dependency>
+      <groupId>com.sap.cloud.db.jdbc</groupId>
+      <artifactId>ngdbc</artifactId>
+      <version>2.3.48</version>
+      <!-- <type>pom</type> -->
+    </dependency>
+  </dependencies>
+  
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
     <resources>
@@ -58,6 +74,17 @@
           </execution>
         </executions>
       </plugin>
+            <plugin>
+         <groupId>org.apache.tomcat.maven</groupId>
+         <artifactId>tomcat7-maven-plugin</artifactId>
+         <version>2.2</version>
+         <configuration>
+             <url>http://localhost:8081/manager/text</url>
+             <server>TomcatServer8</server>
+             <path>/service_agreement</path>
+         </configuration>
+       </plugin>      
+      
     </plugins>
   </build>
   <profiles>
@@ -81,7 +108,7 @@
                 </resource>
               </webResources>
             </configuration>
-          </plugin>
+          </plugin>          
         </plugins>
       </build>
     </profile>

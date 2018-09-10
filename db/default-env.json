@@ -1,0 +1,21 @@
+
+{
+    "VCAP_SERVICES": {
+        "hana": [
+            {
+                "name": "hana", "tags": [ "hana" ],
+                "credentials":{
+                    "driver": "com.sap.db.jdbc.Driver",
+                    "hdi_password": "Jn4BytH42oKJC7_05p5d4NvoevqamzMG--vqoa_O3HnYPQsu4wxMPyK2-jluXPJOB.JI3pc44W0CSEejho0CBV97UwHASK-PfHjuPSqjrUyU93r20OybFhcpk0gXtw6P",
+                    "hdi_user": "SBSS_81868279220228947911237559260436360281734032510352708157052717223",
+                    "host": "10.253.93.93",
+                    "password": "Qr67PTNYYQRrOygk8HGsjy147YhdbSI8Fr9iJlo3esuFhp3ggnwXF6n2nXX4OrJIYJxcq7CUJgiBsMNqJvAq.9FFfhCGHZId89WZEjdbCYXPDmVyRAQjeDDtw7tPy96J",
+                    "port": "30041",
+                    "schema": "B173217EE28A43D99E48624255A16841",
+                    "url": "jdbc:sap://10.253.93.93:30041/?currentschema=B173217EE28A43D99E48624255A16841",
+                    "user": "SBSS_07921188122374037433455289612469647225418928917958594937264333870"
+                   }
+            }
+        ]
+    }
+}

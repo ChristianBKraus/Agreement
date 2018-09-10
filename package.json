@@ -6,7 +6,9 @@
   "author": "D043312",
   "dependencies": {
     "@sap/cds": "*",
-    "@sap/generator-cds": "0.0.22"
+    "@sap/generator-cds": "0.0.22",
+    "npm": "^6.4.1",
+    "sqlite3": "^4.0.2"
   },
   "scripts": {
     "build": "cds build --clean"

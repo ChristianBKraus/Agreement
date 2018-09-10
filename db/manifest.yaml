@@ -1,0 +1,11 @@
+---
+applications:
+- name: db
+  memory: 256M
+  requires:
+    - name: agreement-hdi-container
+resources:
+  - name: agreement-hdi-container
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container

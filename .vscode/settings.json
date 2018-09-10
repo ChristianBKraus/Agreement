@@ -4,5 +4,6 @@
     "**/_out": true,
     "**/.git": true,
     "**/.DS_Store": true
-  }
+  },
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

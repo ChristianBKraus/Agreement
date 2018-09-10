@@ -1,8 +1,0 @@
----
-applications:
-  - name: agreement-srv
-    memory: 512M
-    buildpack: sap_java_buildpack
-    path: target/agreement-srv-1.0-SNAPSHOT.war  
-    services:
-    - agreement

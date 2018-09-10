@@ -10,7 +10,7 @@ type PaymentMethodType : String enum { nettingByInhouseBank; };
 type CostAllocationObjectType : String enum { Project; };
  
 entity ServiceAgreement : base.managed {
-  key ID : Integer;
+  key ID : String;
   // Base
   serviceType : ServiceType;
   description : String;
@@ -35,7 +35,7 @@ entity ServiceAgreement : base.managed {
 };
 
 entity ServiceReceiver {
-  key ID : Integer;
+  key ID : String;
   serviceAgreement : Association to ServiceAgreement;
 
   businessPartner : Association to BusinessPartner;
@@ -44,25 +44,25 @@ entity ServiceReceiver {
 }
 
 entity PlannedCost {
-  key ID : Integer;
+  key ID : String;
   serviceAgreement : Association to ServiceAgreement;
   validFrom : Date;
   validTo : Date;
   costElement: Association to CostElement;
-  aount : base.Amount;
+  amount : base.Amount;
 };
 
 // ------------------- Other Entities
 
 entity BusinessPartner {
   key ID : String;
-  dsecription : String;
+  description : String;
 };
 
 entity Company {
   key ID : String;
   code : String;
-  descrition : String;
+  description : String;
 }
 
 entity CostAllocationObject {

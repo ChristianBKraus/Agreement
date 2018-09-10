@@ -13,3 +13,4 @@ gen
 .DS_Store
 srv/target/*
 srv/src/main/resources/edmx/*
+agreement.db
